@@ -47,64 +47,6 @@ void Funkcja1() {
 }
 
 
-void Funkcja2() {
-
-
-
-//...
-
-
-    SDL_Flip(screen);
-
-}
-
-
-void Funkcja3() {
-
-
-
-//...
-
-
-    SDL_Flip(screen);
-
-}
-
-
-void Funkcja4() {
-
-
-
-//...
-
-
-    SDL_Flip(screen);
-
-}
-
-
-void Funkcja5() {
-
-
-
-//...
-
-
-    SDL_Flip(screen);
-
-}
-
-void Funkcja6() {
-
-
-
-//...
-
-
-    SDL_Flip(screen);
-
-}
-
 
 
 
@@ -260,16 +202,7 @@ int main ( int argc, char** argv )
                         done = true;
                     if (event.key.keysym.sym == SDLK_1)
                         Funkcja1();
-                    if (event.key.keysym.sym == SDLK_2)
-                        Funkcja2();
-                    if (event.key.keysym.sym == SDLK_3)
-                        Funkcja3();
-                    if (event.key.keysym.sym == SDLK_4)
-                        Funkcja4();
-                    if (event.key.keysym.sym == SDLK_5)
-                        Funkcja5();
-                    if (event.key.keysym.sym == SDLK_6)
-                        Funkcja6();
+
                     if (event.key.keysym.sym == SDLK_a)
                         ladujBMP("obrazek1.bmp", 0, 0);
                     if (event.key.keysym.sym == SDLK_s)

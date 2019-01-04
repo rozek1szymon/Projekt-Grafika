@@ -13,7 +13,11 @@
 #define pi 3.14
 #include <time.h>
 #include <iostream>
+#include <map>
+#include <vector>
 using namespace std;
+
+
 
 SDL_Surface *screen;
 int width = 900;
@@ -36,8 +40,49 @@ void Funkcja6();
 
 
 void Funkcja1() {
+struct kolorek
+{
+    int a;
+    int b;
+    int c;
+};
+int C,M,Y;
+int c,m,y,k;
+int R,G,B,W;
+int BW;
+SDL_Color kolor;
+
+for(int xx=0; xx<width/2; xx++)
+{
+    for(int yy=0; yy<height/2; yy++)
+    {
 
 
+      SDL_Color kolor = getPixel(xx,yy); //we are gettig each pixel in img;
+
+
+     setPixel(xx+width/2,yy+height/2,kolor.r,kolor.g,kolor.b );
+
+
+     //setPixel(xx,yy+height/2,kolor.r,kolor.g,kolor.b);
+
+
+     //setPixel(xx+width/2,yy,kolor.r,kolor.g,kolor.b);
+
+
+
+
+
+    }
+}
+
+for(int xx=0; xx<width/2; xx++)
+{
+    for(int yy=0; yy<height/2; yy++)
+    {
+
+    }
+}
 
 //...
 

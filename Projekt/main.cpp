@@ -13,7 +13,11 @@
 #define pi 3.14
 #include <time.h>
 #include <iostream>
+#include <map>
+#include <vector>
 using namespace std;
+
+
 
 SDL_Surface *screen;
 int width = 900;
@@ -36,8 +40,49 @@ void Funkcja6();
 
 
 void Funkcja1() {
+struct kolorek
+{
+    int a;
+    int b;
+    int c;
+};
+int C,M,Y;
+int c,m,y,k;
+int R,G,B,W;
+int BW;
+SDL_Color kolor;
+
+for(int xx=0; xx<width/2; xx++)
+{
+    for(int yy=0; yy<height/2; yy++)
+    {
 
 
+      SDL_Color kolor = getPixel(xx,yy); //we are gettig each pixel in img;
+
+
+     setPixel(xx+width/2,yy+height/2,kolor.r,kolor.g,kolor.b );
+
+
+     //setPixel(xx,yy+height/2,kolor.r,kolor.g,kolor.b);
+
+
+     //setPixel(xx+width/2,yy,kolor.r,kolor.g,kolor.b);
+
+
+
+
+
+    }
+}
+
+for(int xx=0; xx<width/2; xx++)
+{
+    for(int yy=0; yy<height/2; yy++)
+    {
+
+    }
+}
 
 //...
 
@@ -46,64 +91,6 @@ void Funkcja1() {
 
 }
 
-
-void Funkcja2() {
-
-
-
-//...
-
-
-    SDL_Flip(screen);
-
-}
-
-
-void Funkcja3() {
-
-
-
-//...
-
-
-    SDL_Flip(screen);
-
-}
-
-
-void Funkcja4() {
-
-
-
-//...
-
-
-    SDL_Flip(screen);
-
-}
-
-
-void Funkcja5() {
-
-
-
-//...
-
-
-    SDL_Flip(screen);
-
-}
-
-void Funkcja6() {
-
-
-
-//...
-
-
-    SDL_Flip(screen);
-
-}
 
 
 
@@ -260,16 +247,7 @@ int main ( int argc, char** argv )
                         done = true;
                     if (event.key.keysym.sym == SDLK_1)
                         Funkcja1();
-                    if (event.key.keysym.sym == SDLK_2)
-                        Funkcja2();
-                    if (event.key.keysym.sym == SDLK_3)
-                        Funkcja3();
-                    if (event.key.keysym.sym == SDLK_4)
-                        Funkcja4();
-                    if (event.key.keysym.sym == SDLK_5)
-                        Funkcja5();
-                    if (event.key.keysym.sym == SDLK_6)
-                        Funkcja6();
+
                     if (event.key.keysym.sym == SDLK_a)
                         ladujBMP("obrazek1.bmp", 0, 0);
                     if (event.key.keysym.sym == SDLK_s)

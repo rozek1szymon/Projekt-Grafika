@@ -15,6 +15,7 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <string>
 using namespace std;
 
 
@@ -40,17 +41,26 @@ void Funkcja6();
 
 
 void Funkcja1() {
-struct kolorek
-{
-    int a;
-    int b;
-    int c;
-};
+
 int C,M,Y;
 int c,m,y,k;
 int R,G,B,W;
 int BW;
 SDL_Color kolor;
+
+struct rgb {
+    int r;
+    int g;
+    int b;
+
+};
+
+
+
+
+map<rgb, string, compEncode> encodeMap;
+
+
 
 for(int xx=0; xx<width/2; xx++)
 {
@@ -59,7 +69,6 @@ for(int xx=0; xx<width/2; xx++)
 
 
       SDL_Color kolor = getPixel(xx,yy); //we are gettig each pixel in img;
-
 
      setPixel(xx+width/2,yy+height/2,kolor.r,kolor.g,kolor.b );
 

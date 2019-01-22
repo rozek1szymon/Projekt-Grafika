@@ -53,7 +53,7 @@ void PixelTable()
        for (int j = 0; j < img_width; j++)
         {
             pixels[i][j] = getPixel(i, j);
-            setPixel(i+img_height/2,j,pixels[i][j].r,pixels[i][j].g,pixels[i][j].b);
+            setPixel(i+height/2,j,pixels[i][j].r,pixels[i][j].g,pixels[i][j].b);
         }
     }
 

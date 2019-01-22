@@ -37,11 +37,15 @@ private:
     RLE getAvgColor(vector<RLE>& pixels);
     int Maxrange(unsigned char r, unsigned char g, unsigned char b);
     void pixelsTo1D();
+    
+    int colorsCounter = 0;
+    SDL_Color* newColors = new SLD_Colors(16);
+    bool finish = false;
    
 public:
     SDL_Color* fillColorPalette();
     SDL_Color* fillBWPalette();
-    void MedianCutPalette();
+    SDL_Color* MedianCutPalette();
 };
 
 #endif /* Converter_hpp */

@@ -46,8 +46,13 @@ SDL_Color* Converter::fillBWPalette() {
     return BWPalette;
 }
 
-void Converter::MedianCutPalette() {
-   MedianCut(pixels1D, 0, ColorsNum - 1, iImgWidth*iImgHeight);
+SDL_Color* Converter::MedianCutPalette() {
+    
+    if(!finish) {
+        MedianCut(pixels1D, 0, ColorsNum - 1, iImgWidth*iImgHeight);
+    } else {
+        return newColors;
+    }
 }
 
 int Converter::Maxrange(unsigned char r, unsigned char g, unsigned char b)
@@ -69,7 +74,20 @@ void Converter::MedianCut(RLE * undertable, int left, int right, int size)
         for (int i = 0; i < size; i++)
         {
             setPixel(undertable[i].j , undertable[i].i, avgColor.r, avgColor.g, avgColor.b);
+            
+            SDL_Color newColor;
+            newColor.r = avgColor.r;
+            newColor.g = avgColor.g;
+            newColor.b = avgColor.b;
+            
+            newColors[colorsCounter] = &newColor;
+            colorsCounter++;
+            
             pxcolornumber[undertable[i].i*iImgWidth + undertable[i].j] = left;
+            
+            if (colorsCounter == 16) {
+                finish = true;
+            }
         }
         SDL_Flip(screen);
         return;

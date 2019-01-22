@@ -69,10 +69,10 @@ for(int xx=0; xx<height/2; xx++)
     for(int yy=0; yy<width/2; yy++)
 {
     kolor=getPixel(xx,yy);
-    setPixel(xx+width/2,yy,kolor.r,kolor.g,kolor.b);
+    setPixel(xx,yy+width/2,kolor.r,kolor.g,kolor.b);
 }
 }
-
+ SDL_Flip(screen);
  }
 //funkcja tworzπca tablicÍ pixeli typu SDL_Color
 void PixelTable()

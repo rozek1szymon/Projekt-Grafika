@@ -50,7 +50,7 @@ SDL_Color WhichColorFitTheMost(SDL_Color kolor1[16], SDL_Color kolor2)
      }
 return theclosestcolor;
 }
-
+//kolory narzucone odgórnie
 SDL_Color kolor1[16]={{0,0,0},{0,0,255},
 {0,107,0},{0,97,255},
 {0,190,0},{0,185,255},
@@ -59,6 +59,19 @@ SDL_Color kolor1[16]={{0,0,0},{0,0,255},
 {255,93,0},{255,82,255},
 {255,183,0},{255,179,255},
 {255,255,0},{255,255,255}};
+SDL_Color BWcolor[16];
+
+SDL_Color BWPalette[16];
+
+    int i = 0;
+    for (int j = 0; j < 255; j += 16)
+    {
+        BWPalette[i] = { j, j, j };
+        ++i;
+    }
+
+    return BWPalette;
+}
 
 
  Funkcja1()
@@ -69,6 +82,7 @@ for(int xx=0; xx<width/2; xx++)
     for(int yy=0; yy<height/2; yy++)
 {
     kolor=getPixel(xx,yy);
+    setPixel(xx+width/2,yy,WhichColorFitTheMost(kolor1,kolor).r,WhichColorFitTheMost(kolor1,kolor).g,WhichColorFitTheMost(kolor1,kolor).b);
     setPixel(xx+width/2,yy,WhichColorFitTheMost(kolor1,kolor).r,WhichColorFitTheMost(kolor1,kolor).g,WhichColorFitTheMost(kolor1,kolor).b);
 }
 }

@@ -15,10 +15,11 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <math.h>
 using namespace std;
 
 
-
+void PixelTable();
 SDL_Surface *screen;
 int width = 900;
 int height = 600;
@@ -31,11 +32,46 @@ void czyscEkran(Uint8 R, Uint8 G, Uint8 B);
 
 int img_width, img_height;
 SDL_Color ** pixels = NULL;
+SDL_Color WhichColorFitTheMost(SDL_Color kolor1[16], SDL_Color kolor2)
+{
+    double TheClosest=255;
+    SDL_Color theclosestcolor=kolor1[0];
+
+     for(int i=0; i<16; i++)
+     {
+        double pierwiastek = sqrt((kolor2.r-kolor1[i].r)*(kolor2.r-kolor1[i].r) + (kolor2.g-kolor1[i].g)*(kolor2.g-kolor1[i].g)+(kolor2.b-kolor1[i].b)*(kolor2.b-kolor1[i].b));
+        if(pierwiastek<TheClosest)
+        {
+            theclosestcolor=kolor1[i];
+            TheClosest=pierwiastek;
+
+        }
+
+     }
+return theclosestcolor;
+}
+
+SDL_Color kolor1[16]={{0,0,0},{0,0,255},
+{0,107,0},{0,97,255},
+{0,190,0},{0,185,255},
+{0,255,0},{0,255,0},
+{255,0,0},{255,0,255},
+{255,93,0},{255,82,255},
+{255,183,0},{255,179,255},
+{255,255,0},{255,255,255}};
+
 
  Funkcja1()
  {
-
-
+     SDL_Color kolor;
+for(int xx=0; xx<height/2; xx++)
+{
+    for(int yy=0; yy<width/2; yy++)
+{
+    kolor=getPixel(xx,yy);
+    setPixel(xx+width/2,yy,kolor.r,kolor.g,kolor.b);
+}
+}
 
  }
 //funkcja tworzπca tablicÍ pixeli typu SDL_Color
@@ -53,7 +89,7 @@ void PixelTable()
        for (int j = 0; j < img_width; j++)
         {
             pixels[i][j] = getPixel(i, j);
-            setPixel(i+img_height/2,j,pixels[i][j].r,pixels[i][j].g,pixels[i][j].b);
+
         }
     }
 

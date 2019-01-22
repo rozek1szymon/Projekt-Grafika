@@ -737,7 +737,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1548192392 source:c:\users\hp\desktop\grafika\projekt-grafika\projekt\main.cpp
+1548194510 source:c:\users\hp\desktop\grafika\projekt-grafika\projekt\main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL/SDL.h>
@@ -747,6 +747,7 @@
 	<iostream>
 	<map>
 	<vector>
+	<math.h>
 
 1548192068 c:\users\hp\desktop\grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl.h
 	"SDL_main.h"

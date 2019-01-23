@@ -14,7 +14,6 @@ Converter::Converter(SDL_Color** _pixels, int width, int height, SDL_Surface *sc
     iImgHeight = height;
     screen0 = screen;
 
-    newColors = new SDL_Color[16];
     pixelsTo1D();
 }
 
@@ -84,7 +83,7 @@ void Converter::MedianCut(RLE* undertable, int left, int right, int size)
             newColor.r = avgColor.r;
             newColor.g = avgColor.g;
             newColor.b = avgColor.b;
-cout<<colorsCounter<<endl;
+
             newColors[colorsCounter] = newColor;
             colorsCounter++;
 

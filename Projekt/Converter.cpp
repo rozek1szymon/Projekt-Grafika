@@ -14,7 +14,6 @@ Converter::Converter(SDL_Color** _pixels, int width, int height, SDL_Surface *sc
     iImgHeight = height;
     screen0 = screen;
 
-    newColors = new SDL_Color[16];
     pixelsTo1D();
 }
 
@@ -70,6 +69,7 @@ int Converter::Maxrange(unsigned char r, unsigned char g, unsigned char b)
 
 void Converter::MedianCut(RLE* undertable, int left, int right, int size)
 {
+    cout<<"a"<<endl;
     if (right == left)
     {
         RLE avgColor = getAvgColor(undertable, size);
@@ -78,22 +78,10 @@ void Converter::MedianCut(RLE* undertable, int left, int right, int size)
 
         for (int i = 0; i < size; i++)
         {
+            cout<<"b"<<endl;
             setPixel(undertable[i].j , undertable[i].i, avgColor.r, avgColor.g, avgColor.b);
-
-            SDL_Color newColor;
-            newColor.r = avgColor.r;
-            newColor.g = avgColor.g;
-            newColor.b = avgColor.b;
-cout<<colorsCounter<<endl;
-            newColors[colorsCounter] = newColor;
-            colorsCounter++;
-
             pxcolornumber[undertable[i].i*iImgWidth + undertable[i].j] = left;
 
-
-            if (colorsCounter == 16) {
-                finish = true;
-            }
         }
         SDL_Flip(screen0);
 

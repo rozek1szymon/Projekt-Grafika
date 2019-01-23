@@ -36,6 +36,8 @@ void czyscEkran(Uint8 R, Uint8 G, Uint8 B);
 int img_width, img_height;
 SDL_Color ** pixels = NULL;
 
+static SDL_Color* newColors = new SDL_Color[16];
+
 Converter* converter;
 
 SDL_Color WhichColorFitTheMost(SDL_Color kolor1[16], SDL_Color kolor2)

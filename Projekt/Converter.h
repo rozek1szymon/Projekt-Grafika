@@ -40,10 +40,6 @@ private:
     int Maxrange(unsigned char r, unsigned char g, unsigned char b);
     void pixelsTo1D();
 
-    int colorsCounter = 0;
-    SDL_Color* newColors;
-    bool finish = false;
-
     SDL_Surface *screen0;
     void setPixel(int x, int y, Uint8 R, Uint8 G, Uint8 B);
 

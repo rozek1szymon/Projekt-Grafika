@@ -28,7 +28,8 @@ int width = 900;
 int height = 600;
 char const* tytul = "GKiM - Lab 2 - Nazwisko Imie";
 
-
+void DitheringKolor();
+void DitheringSzarosc();
 void setPixel(int x, int y, Uint8 R, Uint8 G, Uint8 B);
 SDL_Color getPixel (int x, int y);
 void czyscEkran(Uint8 R, Uint8 G, Uint8 B);
@@ -64,7 +65,7 @@ void Funkcja1()
     SDL_Color* kolor1 = converter->fillColorPalette();
     SDL_Color* kolor2 = converter->fillBWPalette();
     SDL_Color* kolor3 = converter->MedianCutPalette();
-    //a
+
 
     SDL_Color kolor;
     for(int xx=0; xx<width/2; xx++)
@@ -72,9 +73,21 @@ void Funkcja1()
         for(int yy=0; yy<height/2; yy++)
         {
             kolor=getPixel(xx,yy);
-            setPixel(xx+width/2,yy,WhichColorFitTheMost(kolor1,kolor).r,WhichColorFitTheMost(kolor1,kolor).g,WhichColorFitTheMost(kolor1,kolor).b);
-            setPixel(xx,yy+height/2,WhichColorFitTheMost(kolor2,kolor).r,WhichColorFitTheMost(kolor2,kolor).g,WhichColorFitTheMost(kolor2,kolor).b);
-            setPixel(xx+width/2,yy+height/2,WhichColorFitTheMost(kolor3,kolor).r,WhichColorFitTheMost(kolor3,kolor).g,WhichColorFitTheMost(kolor3,kolor).b);
+
+             //DitheringKolor();
+            setPixel(xx,yy,WhichColorFitTheMost(kolor1,kolor).r,WhichColorFitTheMost(kolor1,kolor).g,WhichColorFitTheMost(kolor1,kolor).b);
+           // setPixel(xx,yy,WhichColorFitTheMost(kolor2,kolor).r,WhichColorFitTheMost(kolor2,kolor).g,WhichColorFitTheMost(kolor2,kolor).b);
+           // setPixel(xx,yy,WhichColorFitTheMost(kolor3,kolor).r,WhichColorFitTheMost(kolor3,kolor).g,WhichColorFitTheMost(kolor3,kolor).b);
+          // DitheringSzarosc();
+        }
+    }
+    for(int xx=0; xx<width/2; xx++)
+    {
+        for(int yy=0; yy<height/2; yy++)
+        {
+            kolor=getPixel(xx,yy);
+           DitheringSzarosc();
+           //DitheringKolor();
         }
     }
     SDL_Flip(screen);
@@ -104,6 +117,113 @@ SDL_Color* dedicatedColors = new SDL_Color[16];
 void Funkcja2 () {
     converter->MedianCutPalette();
 }
+
+void DitheringSzarosc()
+{
+    int BW;
+    SDL_Color kolor;
+    float bledy[(width/2) + 2][(height/2) + 2];
+    memset(bledy, 0, sizeof(bledy));
+    int blad = 0;
+    int przesuniecie = 1; // aby nie wyjsc ponizej (-1) tabeli bledow
+
+
+    for(int y = 0; y < (height / 2); y++)
+        for(int x = 0; x < (width / 2); x++)
+        {
+            kolor = getPixel(x, y);
+            BW = kolor.r * 0.299 + kolor.g * 0.587 + kolor.b * 0.114;
+            //setPixel(x, y + (height/2), BW, BW, BW);
+
+            BW += bledy[x + przesuniecie][y];
+            if(BW > 127)
+            {
+                setPixel(x + width / 2, y + height / 2, 255, 255, 255);
+                blad = BW - 255;
+            }
+            else
+            {
+                setPixel(x + width / 2, y + height / 2, 0, 0, 0);
+                blad = BW;
+            }
+
+            bledy[x + przesuniecie + 1][y] += (blad * 7.0/16.0);
+            bledy[x + przesuniecie - 1][y + 1] += (blad * 3.0/16.0);
+            bledy[x + przesuniecie + 1][y + 1] += (blad * 5.0/16.0);
+            bledy[x + przesuniecie + 1][y + 1] += (blad * 1.0/16.0);
+
+        }
+         SDL_Flip(screen);
+
+}
+
+void DitheringKolor()
+{
+    SDL_Color kolor, kolor2;
+    for(int y = 0; y < (height / 2) -1; y++)
+        for(int x = 1; x < (width / 2) ; x++)
+        {
+            kolor = getPixel(x, y);
+
+            float oldR = kolor.r;
+            float oldG = kolor.g;
+            float oldB = kolor.b;
+
+            int factor = 15; // mamy do dyspozycji 10 roznych wartosci dla g a tylko 2 dla r i b
+            int newR = round(oldR*factor / 255) * (255 / factor);
+            int newG = round(factor * oldG / 255) * (255 / factor);
+            int newB = round(oldB*factor/ 255) * (255 / factor);
+            setPixel(x + width / 2, y + height / 2, newR, newG, newB);
+
+            float errR = oldR - newR;
+            float errG = oldG - newG;
+            float errB = oldB - newB;
+
+
+            kolor2 = getPixel(x+1,y);
+            float r = kolor2.r;
+            float g = kolor2.g;
+            float b = kolor2.b;
+            r = r + (errR * 7.0/16.0);
+            g = g + (errG * 7.0/16.0);
+            b = b + (errB * 7.0/16.0);
+            setPixel(x + width / 2 + 1, y + height / 2, r, g, b);
+
+            kolor2 = getPixel(x-1,y+1);
+            r = kolor2.r;
+            g = kolor2.g;
+            b = kolor2.b;
+            r = r + (errR * 3.0/16.0);
+            g = g + (errG * 3.0/16.0);
+            b = b + (errB * 3.0/16.0);
+            setPixel(x + width / 2 - 1, y + height / 2 + 1, r, g, b);
+
+            kolor2 = getPixel(x ,y+1);
+            r = kolor2.r;
+            g = kolor2.g;
+            b = kolor2.b;
+            r = r + (errR * 5.0/16.0);
+            g = g + (errG * 5.0/16.0);
+            b = b + (errB * 5.0/16.0);
+            setPixel(x + width / 2, y + height / 2 + 1, r, g, b);
+
+            kolor2 = getPixel(x+1,y+1);
+            r = kolor2.r;
+            g = kolor2.g;
+            b = kolor2.b;
+            r = r + errR * 1.0/16.0;
+            g = g + errG * 1.0/16.0;
+            b = b + errB * 1.0/16.0;
+            setPixel(x + width / 2 + 1, y + height / 2 + 1, r, g, b);
+        }
+         SDL_Flip(screen);
+}
+
+
+
+
+
+
 
 void setPixel(int x, int y, Uint8 R, Uint8 G, Uint8 B)
 {

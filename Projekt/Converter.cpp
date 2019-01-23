@@ -8,6 +8,14 @@
 
 #include "Converter.h"
 
+
+
+
+
+
+
+
+
 Converter::Converter(SDL_Color** _pixels, int width, int height, SDL_Surface *screen){
     pixels = _pixels;
     iImgWidth = width;
@@ -18,6 +26,9 @@ Converter::Converter(SDL_Color** _pixels, int width, int height, SDL_Surface *sc
     pixelsTo1D();
     //a
 }
+
+
+
 
 SDL_Color* Converter::fillColorPalette() {
 

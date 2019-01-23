@@ -63,7 +63,7 @@ void Funkcja1()
 {
     SDL_Color* kolor1 = converter->fillColorPalette();
     SDL_Color* kolor2 = converter->fillBWPalette();
-   // SDL_Color* kolor3 =converter->
+    SDL_Color* kolor3 = converter->MedianCutPalette();
 
     SDL_Color kolor;
     for(int xx=0; xx<width/2; xx++)
@@ -73,6 +73,7 @@ void Funkcja1()
             kolor=getPixel(xx,yy);
             setPixel(xx+width/2,yy,WhichColorFitTheMost(kolor1,kolor).r,WhichColorFitTheMost(kolor1,kolor).g,WhichColorFitTheMost(kolor1,kolor).b);
             setPixel(xx,yy+height/2,WhichColorFitTheMost(kolor2,kolor).r,WhichColorFitTheMost(kolor2,kolor).g,WhichColorFitTheMost(kolor2,kolor).b);
+            setPixel(xx+width/2,yy+height/2,WhichColorFitTheMost(kolor3,kolor).r,WhichColorFitTheMost(kolor3,kolor).g,WhichColorFitTheMost(kolor3,kolor).b);
         }
     }
     SDL_Flip(screen);

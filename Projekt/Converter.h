@@ -35,6 +35,7 @@ private:
     vector<RLE> * testvector[ColorsNum];
     RLE NewPalette[ColorsNum]{};
 
+    void preMedianCut();
     void MedianCut(RLE * undertable, int left, int right, int size);
     RLE getAvgColor(RLE* pixels, int size);
     int Maxrange(unsigned char r, unsigned char g, unsigned char b);
@@ -43,12 +44,15 @@ private:
     SDL_Surface *screen0;
     void setPixel(int x, int y, Uint8 R, Uint8 G, Uint8 B);
 
+    SDL_Color* newColors;
+    bool finish = false;
+
 public:
     Converter(SDL_Color** _pixels, int width, int height, SDL_Surface *screen);
 
     SDL_Color* fillColorPalette();
     SDL_Color* fillBWPalette();
-    void MedianCutPalette();
+    SDL_Color* MedianCutPalette();
 };
 
 #endif /* Converter_hpp */

@@ -13,6 +13,7 @@ Converter::Converter(SDL_Color** _pixels, int width, int height, SDL_Surface *sc
     iImgWidth = width;
     iImgHeight = height;
     screen0 = screen;
+    newColors = new SDL_Color[16];
 
     pixelsTo1D();
 }
@@ -55,8 +56,12 @@ SDL_Color* Converter::fillBWPalette() {
     return BWPalette;
 }
 
-void Converter::MedianCutPalette() {
-    MedianCut(pixels1D, 0, ColorsNum - 1, iImgWidth*iImgHeight);
+SDL_Color* Converter::MedianCutPalette() {
+    preMedianCut();
+    while (!finish) {
+        //do nothing
+    }
+    return newColors;
 }
 
 int Converter::Maxrange(unsigned char r, unsigned char g, unsigned char b)
@@ -67,9 +72,18 @@ int Converter::Maxrange(unsigned char r, unsigned char g, unsigned char b)
     return max;
 }
 
+ void Converter::preMedianCut()
+{
+	if (pxcolornumber != nullptr) {
+        delete[] pxcolornumber;
+	}
+    pxcolornumber = new unsigned char[iImgWidth*iImgHeight];
+
+	MedianCut(pixels1D, 0, ColorsNum - 1, iImgWidth*iImgHeight);
+}
+
 void Converter::MedianCut(RLE* undertable, int left, int right, int size)
 {
-    cout<<"a"<<endl;
     if (right == left)
     {
         RLE avgColor = getAvgColor(undertable, size);
@@ -78,11 +92,19 @@ void Converter::MedianCut(RLE* undertable, int left, int right, int size)
 
         for (int i = 0; i < size; i++)
         {
-            cout<<"b"<<endl;
-            setPixel(undertable[i].j , undertable[i].i, avgColor.r, avgColor.g, avgColor.b);
+            //setPixel(undertable[i].i , undertable[i].j, avgColor.r, avgColor.g, avgColor.b);
             pxcolornumber[undertable[i].i*iImgWidth + undertable[i].j] = left;
-
         }
+
+        if (newPalette.size()==16) {
+            for (int i = 0; i < 16; i++) {
+                SDL_Color kolor = {NewPalette[i].r, NewPalette[i].g, NewPalette[i].b};
+                newColors[i] = kolor;
+            }
+            finish = true;
+        }
+
+
         SDL_Flip(screen0);
 
         return;

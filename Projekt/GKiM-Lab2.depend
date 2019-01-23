@@ -737,7 +737,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1548202842 source:c:\users\hp\desktop\grafika\projekt-grafika\projekt\main.cpp
+1548207458 source:c:\users\hp\desktop\grafika\projekt-grafika\projekt\main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL/SDL.h>
@@ -1124,14 +1124,14 @@
 	<SDL/SDL.h>
 	<SDL.h>
 
-1548203070 c:\users\hp\desktop\grafika\projekt-grafika\projekt\converter.h
+1548207399 c:\users\hp\desktop\grafika\projekt-grafika\projekt\converter.h
 	<SDL/SDL.h>
 	<SDL.h>
 	<stdio.h>
 	<vector>
 	"Heap.h"
 
-1548203070 source:c:\users\hp\desktop\grafika\projekt-grafika\projekt\converter.cpp
+1548207490 source:c:\users\hp\desktop\grafika\projekt-grafika\projekt\converter.cpp
 	"Converter.h"
 
 1548202589 source:c:\users\hp\desktop\grafika\projekt-grafika\projekt\src\singleton.cpp

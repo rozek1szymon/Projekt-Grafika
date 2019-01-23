@@ -16,6 +16,7 @@ Converter::Converter(SDL_Color** _pixels, int width, int height, SDL_Surface *sc
     newColors = new SDL_Color[16];
 
     pixelsTo1D();
+    //a
 }
 
 SDL_Color* Converter::fillColorPalette() {

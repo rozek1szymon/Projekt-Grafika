@@ -64,6 +64,7 @@ void Funkcja1()
     SDL_Color* kolor1 = converter->fillColorPalette();
     SDL_Color* kolor2 = converter->fillBWPalette();
     SDL_Color* kolor3 = converter->MedianCutPalette();
+    //a
 
     SDL_Color kolor;
     for(int xx=0; xx<width/2; xx++)

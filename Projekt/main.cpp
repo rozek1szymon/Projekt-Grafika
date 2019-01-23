@@ -16,6 +16,9 @@
 #include <map>
 #include <vector>
 #include <math.h>
+
+#include "Converter.h"
+
 using namespace std;
 
 
@@ -32,6 +35,9 @@ void czyscEkran(Uint8 R, Uint8 G, Uint8 B);
 
 int img_width, img_height;
 SDL_Color ** pixels = NULL;
+
+Converter* converter;
+
 SDL_Color WhichColorFitTheMost(SDL_Color kolor1[16], SDL_Color kolor2)
 {
     double TheClosest=255;
@@ -50,44 +56,25 @@ SDL_Color WhichColorFitTheMost(SDL_Color kolor1[16], SDL_Color kolor2)
      }
 return theclosestcolor;
 }
-//kolory narzucone odgórnie
-SDL_Color kolor1[16]={{0,0,0},{0,0,255},
-{0,107,0},{0,97,255},
-{0,190,0},{0,185,255},
-{0,255,0},{0,255,0},
-{255,0,0},{255,0,255},
-{255,93,0},{255,82,255},
-{255,183,0},{255,179,255},
-{255,255,0},{255,255,255}};
-SDL_Color BWcolor[16];
 
-SDL_Color BWPalette[16];
+void Funkcja1()
+{
+    SDL_Color* kolor1 = converter->fillColorPalette();
+    SDL_Color* kolor2 = converter->fillBWPalette();
+   // SDL_Color* kolor3 =converter->
 
-    int i = 0;
-    for (int j = 0; j < 255; j += 16)
+    SDL_Color kolor;
+    for(int xx=0; xx<width/2; xx++)
     {
-        BWPalette[i] = { j, j, j };
-        ++i;
+        for(int yy=0; yy<height/2; yy++)
+        {
+            kolor=getPixel(xx,yy);
+            setPixel(xx+width/2,yy,WhichColorFitTheMost(kolor1,kolor).r,WhichColorFitTheMost(kolor1,kolor).g,WhichColorFitTheMost(kolor1,kolor).b);
+            setPixel(xx,yy+height/2,WhichColorFitTheMost(kolor2,kolor).r,WhichColorFitTheMost(kolor2,kolor).g,WhichColorFitTheMost(kolor2,kolor).b);
+        }
     }
-
-    return BWPalette;
+    SDL_Flip(screen);
 }
-
-
- Funkcja1()
- {
-     SDL_Color kolor;
-for(int xx=0; xx<width/2; xx++)
-{
-    for(int yy=0; yy<height/2; yy++)
-{
-    kolor=getPixel(xx,yy);
-    setPixel(xx+width/2,yy,WhichColorFitTheMost(kolor1,kolor).r,WhichColorFitTheMost(kolor1,kolor).g,WhichColorFitTheMost(kolor1,kolor).b);
-    setPixel(xx+width/2,yy,WhichColorFitTheMost(kolor1,kolor).r,WhichColorFitTheMost(kolor1,kolor).g,WhichColorFitTheMost(kolor1,kolor).b);
-}
-}
- SDL_Flip(screen);
- }
 //funkcja tworzπca tablicÍ pixeli typu SDL_Color
 void PixelTable()
 {
@@ -106,8 +93,12 @@ void PixelTable()
 
         }
     }
+}
 
+SDL_Color* dedicatedColors = new SDL_Color[16];
 
+void Funkcja2 () {
+    converter->MedianCutPalette();
 }
 
 void setPixel(int x, int y, Uint8 R, Uint8 G, Uint8 B)
@@ -188,6 +179,7 @@ void ladujBMP(char const* nazwa, int x, int y)
 
     //tworzenie tablicy
     PixelTable();
+    converter = new Converter(pixels, img_width, img_height, screen);
 }
 
 
@@ -266,6 +258,8 @@ int main ( int argc, char** argv )
                         done = true;
                     if (event.key.keysym.sym == SDLK_1)
                         Funkcja1();
+                    if (event.key.keysym.sym == SDLK_2)
+                        Funkcja2();
 
                     if (event.key.keysym.sym == SDLK_a)
                         ladujBMP("obrazek1.bmp", 0, 0);

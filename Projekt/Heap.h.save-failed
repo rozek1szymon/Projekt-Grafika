@@ -14,7 +14,7 @@
 #include <SDL.h>
 #endif
 
-struct Transfer
+static struct Transfer
 {
     char a;
     unsigned short l : 8;

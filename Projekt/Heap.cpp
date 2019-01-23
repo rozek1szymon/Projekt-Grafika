@@ -4,13 +4,6 @@
 
 using namespace std;
 
-static union Transfer
-{
-    char a;
-    unsigned short l : 8;
-};
-
-
 void Heap::TopDown(int current)
 {
     int left = current * 2 + 1, right = current * 2 + 2, greater = current;
@@ -18,7 +11,7 @@ void Heap::TopDown(int current)
         greater = left;
     if (right < last && func(tab[greater], tab[right]))
         greater = right;
-    
+
     if (greater != current)
     {
         swap(tab[current], tab[greater]);
@@ -31,7 +24,7 @@ void Heap::BottomUp(int current)
     int parent = (current - 1) / 2;
     if (parent < 0)
         return;
-    
+
     if (func(tab[parent], tab[current]))
     {
         swap(tab[current], tab[parent]);
@@ -96,7 +89,7 @@ void Heap::HeapSort()
         TopDown(0);
     }
     last = nbuf;
-    
+
 }
 
 void Heap::insert(RLE element)

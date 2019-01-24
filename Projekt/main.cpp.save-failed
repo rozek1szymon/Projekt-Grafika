@@ -62,8 +62,8 @@ return theclosestcolor;
 
 void Funkcja1()
 {
-    SDL_Color* kolor1 = converter->fillColorPalette();
-    SDL_Color* kolor2 = converter->fillBWPalette();
+    SDL_Color* kolor11 = converter->fillColorPalette();
+   SDL_Color* kolor2 = converter->fillBWPalette();
     SDL_Color* kolor3 = converter->MedianCutPalette();
 
 
@@ -75,10 +75,11 @@ void Funkcja1()
             kolor=getPixel(xx,yy);
 
              //DitheringKolor();
-          //  setPixel(xx+width/2,yy,WhichColorFitTheMost(kolor1,kolor).r,WhichColorFitTheMost(kolor1,kolor).g,WhichColorFitTheMost(kolor1,kolor).b);
+           // setPixel(xx,yy,WhichColorFitTheMost(kolor11,kolor).r,WhichColorFitTheMost(kolor11,kolor).g,WhichColorFitTheMost(kolor11,kolor).b);
            // setPixel(xx,yy,WhichColorFitTheMost(kolor2,kolor).r,WhichColorFitTheMost(kolor2,kolor).g,WhichColorFitTheMost(kolor2,kolor).b);
-            setPixel(xx+width/2,yy+height/2,WhichColorFitTheMost(kolor3,kolor).r,WhichColorFitTheMost(kolor3,kolor).g,WhichColorFitTheMost(kolor3,kolor).b);
+            setPixel(xx,yy,WhichColorFitTheMost(kolor3,kolor).r,WhichColorFitTheMost(kolor3,kolor).g,WhichColorFitTheMost(kolor3,kolor).b);
           // DitheringSzarosc();
+
         }
     }
     for(int xx=0; xx<width/2; xx++)
@@ -87,7 +88,7 @@ void Funkcja1()
         {
             kolor=getPixel(xx,yy);
            DitheringSzarosc();
-           //DitheringKolor();
+            //DitheringKolor();
         }
     }
     SDL_Flip(screen);
@@ -160,7 +161,7 @@ void DitheringSzarosc()
 void DitheringKolor()
 {
     SDL_Color kolor, kolor2;
-    for(int y = 0; y < (height / 2) -1; y++)
+    for(int y = 0; y < (height / 2) - 1; y++)
         for(int x = 1; x < (width / 2) ; x++)
         {
             kolor = getPixel(x, y);
@@ -169,10 +170,10 @@ void DitheringKolor()
             float oldG = kolor.g;
             float oldB = kolor.b;
 
-            int factor = 15; // mamy do dyspozycji 10 roznych wartosci dla g a tylko 2 dla r i b
-            int newR = round(oldR*factor / 255) * (255 / factor);
+            int factor = 10; // mamy do dyspozycji 10 roznych wartosci dla g
+            int newR = round(oldR / 255) * (255 / 2); // mamy do dyspozycji 2 wartosci dla r
             int newG = round(factor * oldG / 255) * (255 / factor);
-            int newB = round(oldB*factor/ 255) * (255 / factor);
+            int newB = round(oldB / 255) * (255 / 2); // mamy do dyspozycji 2 wartosci dla b
             setPixel(x + width / 2, y + height / 2, newR, newG, newB);
 
             float errR = oldR - newR;
@@ -218,7 +219,6 @@ void DitheringKolor()
         }
          SDL_Flip(screen);
 }
-
 
 
 

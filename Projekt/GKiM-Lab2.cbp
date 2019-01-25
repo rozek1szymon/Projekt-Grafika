@@ -48,6 +48,12 @@
 		<Unit filename="Converter.h" />
 		<Unit filename="Heap.cpp" />
 		<Unit filename="Heap.h" />
+		<Unit filename="ImgInfo.cpp" />
+		<Unit filename="ImgInfo.h" />
+		<Unit filename="LZW.cpp" />
+		<Unit filename="LZW.h" />
+		<Unit filename="UserInterface.cpp" />
+		<Unit filename="UserInterface.h" />
 		<Unit filename="cb.bmp" />
 		<Unit filename="main.cpp" />
 		<Extensions>

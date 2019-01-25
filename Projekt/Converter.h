@@ -1,11 +1,3 @@
-//
-//  Converter.hpp
-//  dupa
-//
-//  Created by Wojtek Filipowicz on 22/01/2019.
-//  Copyright © 2019 Wojtek Filipowicz. All rights reserved.
-//
-
 #ifndef Converter_h
 #define Converter_h
 
@@ -26,7 +18,7 @@ const int ColorsNum = 16;
 class Converter {
 private:
 
-    int iImgWidth, iImgHeight, rRange, gRange, bRange;
+    int ImgWidth, ImgHeight, rRange, gRange, bRange;
     vector <RLE> tab, vectorpixels, newPalette;
     SDL_Color ** pixels;
     RLE * pixels1D;
@@ -41,9 +33,6 @@ private:
     int Maxrange(unsigned char r, unsigned char g, unsigned char b);
     void pixelsTo1D();
 
-    SDL_Surface *screen0;
-    void setPixel(int x, int y, Uint8 R, Uint8 G, Uint8 B);
-
     SDL_Color* newColors;
     bool finish = false;
 
@@ -53,6 +42,8 @@ public:
     SDL_Color* fillColorPalette();
     SDL_Color* fillBWPalette();
     SDL_Color* MedianCutPalette();
+
+    SDL_Color** Dithering(SDL_Color** pixels);
 };
 
 #endif /* Converter_hpp */

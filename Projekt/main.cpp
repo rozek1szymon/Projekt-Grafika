@@ -17,29 +17,30 @@
 #include <vector>
 #include <math.h>
 
+#include "ImgInfo.h"
+#include "UserInterface.h"
 #include "Converter.h"
+#include "LZW.h"
 
 using namespace std;
 
-
-void PixelTable();
 SDL_Surface *screen;
 int width = 900;
 int height = 600;
-char const* tytul = "GKiM - Lab 2 - Nazwisko Imie";
-
-void DitheringKolor();
-void DitheringSzarosc();
+char const* tytul = "BMP to GKiM";
 void setPixel(int x, int y, Uint8 R, Uint8 G, Uint8 B);
 SDL_Color getPixel (int x, int y);
 void czyscEkran(Uint8 R, Uint8 G, Uint8 B);
 
+void PixelTable();
 int img_width, img_height;
 SDL_Color ** pixels = NULL;
-
 static SDL_Color* newColors = new SDL_Color[16];
-
+SDL_Color* dedicatedColors = new SDL_Color[16];
 Converter* converter;
+ImgInfo* img_info;
+UserInterface* UI;
+LZW* lzw = new LZW();
 
 SDL_Color WhichColorFitTheMost(SDL_Color kolor1[16], SDL_Color kolor2)
 {
@@ -57,173 +58,76 @@ SDL_Color WhichColorFitTheMost(SDL_Color kolor1[16], SDL_Color kolor2)
         }
 
      }
-return theclosestcolor;
+    return theclosestcolor;
 }
 
 void Funkcja1()
 {
-    SDL_Color* kolor11 = converter->fillColorPalette();
-   SDL_Color* kolor2 = converter->fillBWPalette();
-    SDL_Color* kolor3 = converter->MedianCutPalette();
-
-
-    SDL_Color kolor;
-    for(int xx=0; xx<width/2; xx++)
+    cout<<"Przetwarzanie..."<<endl;
+    SDL_Color* kolor;
+    switch (img_info->paleta)
     {
-        for(int yy=0; yy<height/2; yy++)
+        case 1:
+            kolor = converter->fillColorPalette();
+            cout<<"Paleta narzucona."<<endl;
+            break;
+        case 2:
+            kolor = converter->MedianCutPalette();
+            cout<<"Paleta dedykowana."<<endl;
+            break;
+        case 3:
+            kolor = converter->fillBWPalette();
+            cout<<"Skala szarosci."<<endl;
+            break;
+        default:
+            break;
+    }
+
+    SDL_Color kolor0;
+    cout<<"Wymiary obrazka: "<<img_width<<" x "<<img_height<<endl;
+    for(int xx=0; xx<img_width; xx++) {
+        for(int yy=0; yy<img_height; yy++)
         {
-            kolor=getPixel(xx,yy);
-
-             //DitheringKolor();
-           // setPixel(xx,yy,WhichColorFitTheMost(kolor11,kolor).r,WhichColorFitTheMost(kolor11,kolor).g,WhichColorFitTheMost(kolor11,kolor).b);
-           // setPixel(xx,yy,WhichColorFitTheMost(kolor2,kolor).r,WhichColorFitTheMost(kolor2,kolor).g,WhichColorFitTheMost(kolor2,kolor).b);
-            setPixel(xx,yy,WhichColorFitTheMost(kolor3,kolor).r,WhichColorFitTheMost(kolor3,kolor).g,WhichColorFitTheMost(kolor3,kolor).b);
-          // DitheringSzarosc();
-
+            kolor0=pixels[xx][yy];
+            pixels[xx][yy] = WhichColorFitTheMost(kolor,kolor0);
         }
     }
-    for(int xx=0; xx<width/2; xx++)
-    {
-        for(int yy=0; yy<height/2; yy++)
+
+    if (img_info->dithering) {
+        pixels = converter->Dithering(pixels);
+        cout<<"Dithering wlaczony"<<endl;
+    } else {
+        cout<<"Dithering wylaczony"<<endl;
+    }
+
+    for(int xx=0; xx<img_width; xx++) {
+        for(int yy=0; yy<img_height; yy++)
         {
-            kolor=getPixel(xx,yy);
-           DitheringSzarosc();
-            //DitheringKolor();
+            setPixel(xx, yy, pixels[xx][yy].r, pixels[xx][yy].g, pixels[xx][yy].b);
         }
     }
+
+    //lzw->encodeLZW(pixels, kolor, img_width, img_height);
+
     SDL_Flip(screen);
 }
+
 //funkcja tworzπca tablicÍ pixeli typu SDL_Color
 void PixelTable()
 {
-    //tworzenie dynamicznej tablicy
-    pixels = new SDL_Color * [img_height];
+    pixels = new SDL_Color * [img_width];
+    for (int i = 0; i < img_width; i++)
+        pixels[i] = new SDL_Color[img_height];
 
-    for (int i = 0; i < img_height; i++)
-        pixels[i] = new SDL_Color[img_width];
-
-    //zape≥nianie tablicy
-    for (int i = 0; i < img_height; i++)
+    for (int i = 0; i < img_width; i++)
     {
-       for (int j = 0; j < img_width; j++)
+       for (int j = 0; j < img_height; j++)
         {
             pixels[i][j] = getPixel(i, j);
-
+            //setPixel(i+img_width, j, pixels[i][j].r, pixels[i][j].g, pixels[i][j].b);
         }
     }
 }
-
-SDL_Color* dedicatedColors = new SDL_Color[16];
-
-void Funkcja2 () {
-    converter->MedianCutPalette();
-}
-
-void DitheringSzarosc()
-{
-    int BW;
-    SDL_Color kolor;
-    float bledy[(width/2) + 2][(height/2) + 2];
-    memset(bledy, 0, sizeof(bledy));
-    int blad = 0;
-    int przesuniecie = 1; // aby nie wyjsc ponizej (-1) tabeli bledow
-
-
-    for(int y = 0; y < (height / 2); y++)
-        for(int x = 0; x < (width / 2); x++)
-        {
-            kolor = getPixel(x, y);
-            BW = kolor.r * 0.299 + kolor.g * 0.587 + kolor.b * 0.114;
-            //setPixel(x, y + (height/2), BW, BW, BW);
-
-            BW += bledy[x + przesuniecie][y];
-            if(BW > 127)
-            {
-                setPixel(x + width / 2, y + height / 2, 255, 255, 255);
-                blad = BW - 255;
-            }
-            else
-            {
-                setPixel(x + width / 2, y + height / 2, 0, 0, 0);
-                blad = BW;
-            }
-
-            bledy[x + przesuniecie + 1][y] += (blad * 7.0/16.0);
-            bledy[x + przesuniecie - 1][y + 1] += (blad * 3.0/16.0);
-            bledy[x + przesuniecie + 1][y + 1] += (blad * 5.0/16.0);
-            bledy[x + przesuniecie + 1][y + 1] += (blad * 1.0/16.0);
-
-        }
-         SDL_Flip(screen);
-
-}
-
-void DitheringKolor()
-{
-    SDL_Color kolor, kolor2;
-    for(int y = 0; y < (height / 2) - 1; y++)
-        for(int x = 1; x < (width / 2) ; x++)
-        {
-            kolor = getPixel(x, y);
-
-            float oldR = kolor.r;
-            float oldG = kolor.g;
-            float oldB = kolor.b;
-
-            int factor = 10; // mamy do dyspozycji 10 roznych wartosci dla g
-            int newR = round(oldR / 255) * (255 / 2); // mamy do dyspozycji 2 wartosci dla r
-            int newG = round(factor * oldG / 255) * (255 / factor);
-            int newB = round(oldB / 255) * (255 / 2); // mamy do dyspozycji 2 wartosci dla b
-            setPixel(x + width / 2, y + height / 2, newR, newG, newB);
-
-            float errR = oldR - newR;
-            float errG = oldG - newG;
-            float errB = oldB - newB;
-
-
-            kolor2 = getPixel(x+1,y);
-            float r = kolor2.r;
-            float g = kolor2.g;
-            float b = kolor2.b;
-            r = r + (errR * 7.0/16.0);
-            g = g + (errG * 7.0/16.0);
-            b = b + (errB * 7.0/16.0);
-            setPixel(x + width / 2 + 1, y + height / 2, r, g, b);
-
-            kolor2 = getPixel(x-1,y+1);
-            r = kolor2.r;
-            g = kolor2.g;
-            b = kolor2.b;
-            r = r + (errR * 3.0/16.0);
-            g = g + (errG * 3.0/16.0);
-            b = b + (errB * 3.0/16.0);
-            setPixel(x + width / 2 - 1, y + height / 2 + 1, r, g, b);
-
-            kolor2 = getPixel(x ,y+1);
-            r = kolor2.r;
-            g = kolor2.g;
-            b = kolor2.b;
-            r = r + (errR * 5.0/16.0);
-            g = g + (errG * 5.0/16.0);
-            b = b + (errB * 5.0/16.0);
-            setPixel(x + width / 2, y + height / 2 + 1, r, g, b);
-
-            kolor2 = getPixel(x+1,y+1);
-            r = kolor2.r;
-            g = kolor2.g;
-            b = kolor2.b;
-            r = r + errR * 1.0/16.0;
-            g = g + errG * 1.0/16.0;
-            b = b + errB * 1.0/16.0;
-            setPixel(x + width / 2 + 1, y + height / 2 + 1, r, g, b);
-        }
-         SDL_Flip(screen);
-}
-
-
-
-
-
 
 void setPixel(int x, int y, Uint8 R, Uint8 G, Uint8 B)
 {
@@ -273,6 +177,7 @@ void setPixel(int x, int y, Uint8 R, Uint8 G, Uint8 B)
 
 void ladujBMP(char const* nazwa, int x, int y)
 {
+    cout<<nazwa<<endl;
     SDL_Surface* bmp = SDL_LoadBMP(nazwa);
     if (!bmp)
     {
@@ -337,30 +242,32 @@ int main ( int argc, char** argv )
     // console output
     freopen( "CON", "wt", stdout );
     freopen( "CON", "wt", stderr );
-
     // initialize SDL video
     if ( SDL_Init( SDL_INIT_VIDEO ) < 0 )
     {
         printf( "Unable to init SDL: %s\n", SDL_GetError() );
         return 1;
     }
-
     // make sure SDL cleans up before exit
     atexit(SDL_Quit);
-
     // create a new window
-    screen = SDL_SetVideoMode(width, height, 32,
-                              SDL_HWSURFACE|SDL_DOUBLEBUF);
+    screen = SDL_SetVideoMode(width, height, 32, SDL_HWSURFACE|SDL_DOUBLEBUF);
     if ( !screen )
     {
         printf("Unable to set video: %s\n", SDL_GetError());
         return 1;
     }
-
     SDL_WM_SetCaption( tytul , NULL );
     // program main loop
     bool done = false;
-    while (!done)
+
+    UI = new UserInterface();
+    img_info = UI->Run();
+    ladujBMP((img_info->filename).c_str(), 0, 0);
+    cout<<"Nacisnij '1' na ekranie ze zdjeciem aby wykonac kompresje."<<endl;
+    cout<<"Nacisnij 'ESC' na ekranie ze zdjeciem aby zakonczyc program."<<endl;
+
+     while (!done)
     {
         // message processing loop
         SDL_Event event;
@@ -382,10 +289,8 @@ int main ( int argc, char** argv )
                         done = true;
                     if (event.key.keysym.sym == SDLK_1)
                         Funkcja1();
-                    if (event.key.keysym.sym == SDLK_2)
-                        Funkcja2();
 
-                    if (event.key.keysym.sym == SDLK_a)
+            /*       if (event.key.keysym.sym == SDLK_a)
                         ladujBMP("obrazek1.bmp", 0, 0);
                     if (event.key.keysym.sym == SDLK_s)
                         ladujBMP("obrazek2.bmp", 0, 0);
@@ -396,13 +301,14 @@ int main ( int argc, char** argv )
                     if (event.key.keysym.sym == SDLK_g)
                         ladujBMP("obrazek5.bmp", 0, 0);
                     if (event.key.keysym.sym == SDLK_b)
-                        czyscEkran(0, 0, 10);          break;
+                        czyscEkran(0, 0, 10);
+        */
+                    break;
                 }
             } // end switch
         } // end of message processing
 
     } // end main loop
-
 
     // all is well ;)
     printf("Exited cleanly\n");

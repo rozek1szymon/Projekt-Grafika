@@ -1,34 +1,13 @@
-//
-//  Converter.cpp
-//  dupa
-//
-//  Created by Wojtek Filipowicz on 22/01/2019.
-//  Copyright © 2019 Wojtek Filipowicz. All rights reserved.
-//
-
 #include "Converter.h"
-
-
-
-
-
-
-
-
 
 Converter::Converter(SDL_Color** _pixels, int width, int height, SDL_Surface *screen){
     pixels = _pixels;
-    iImgWidth = width;
-    iImgHeight = height;
-    screen0 = screen;
+    ImgWidth = width;
+    ImgHeight = height;
     newColors = new SDL_Color[16];
 
     pixelsTo1D();
-    //a
 }
-
-
-
 
 SDL_Color* Converter::fillColorPalette() {
 
@@ -71,7 +50,7 @@ SDL_Color* Converter::fillBWPalette() {
 SDL_Color* Converter::MedianCutPalette() {
     preMedianCut();
     while (!finish) {
-        //do nothing
+        //wait for finish
     }
     return newColors;
 }
@@ -89,9 +68,9 @@ int Converter::Maxrange(unsigned char r, unsigned char g, unsigned char b)
 	if (pxcolornumber != nullptr) {
         delete[] pxcolornumber;
 	}
-    pxcolornumber = new unsigned char[iImgWidth*iImgHeight];
+    pxcolornumber = new unsigned char[ImgWidth*ImgHeight];
 
-	MedianCut(pixels1D, 0, ColorsNum - 1, iImgWidth*iImgHeight);
+	MedianCut(pixels1D, 0, ColorsNum - 1, ImgWidth*ImgHeight);
 }
 
 void Converter::MedianCut(RLE* undertable, int left, int right, int size)
@@ -104,8 +83,7 @@ void Converter::MedianCut(RLE* undertable, int left, int right, int size)
 
         for (int i = 0; i < size; i++)
         {
-            //setPixel(undertable[i].i , undertable[i].j, avgColor.r, avgColor.g, avgColor.b);
-            pxcolornumber[undertable[i].i*iImgWidth + undertable[i].j] = left;
+            pxcolornumber[undertable[i].i*ImgWidth + undertable[i].j] = left;
         }
 
         if (newPalette.size()==16) {
@@ -115,9 +93,6 @@ void Converter::MedianCut(RLE* undertable, int left, int right, int size)
             }
             finish = true;
         }
-
-
-        SDL_Flip(screen0);
 
         return;
     }
@@ -203,10 +178,10 @@ void Converter::pixelsTo1D()
     tab.clear();
     vectorpixels.clear();
 
-    pixels1D = new RLE[iImgHeight*iImgWidth];
+    pixels1D = new RLE[ImgHeight*ImgWidth];
     int k = 0;
-    for (int i = 0; i<iImgHeight; i++)
-        for (int j = 0; j < iImgWidth; j++)
+    for (int i = 0; i<ImgWidth; i++)
+        for (int j = 0; j < ImgHeight; j++)
         {
             pixels1D[k].r = pixels[i][j].r;
             pixels1D[k].g = pixels[i][j].g;
@@ -217,47 +192,63 @@ void Converter::pixelsTo1D()
         }
 }
 
-void Converter::setPixel(int x, int y, Uint8 R, Uint8 G, Uint8 B)
-{
-    if ((x>=0) && (x<900) && (y>=0) && (y<600))
-    {
-        /* Zamieniamy poszczególne składowe koloru na format koloru pixela */
-        Uint32 pixel = SDL_MapRGB(screen0->format, R, G, B);
+SDL_Color** Converter::Dithering(SDL_Color** pixels) {
 
-        /* Pobieramy informacji ile bajtów zajmuje jeden pixel */
-        int bpp = screen0->format->BytesPerPixel;
-
-        /* Obliczamy adres pixela */
-        Uint8 *p = (Uint8 *)screen0->pixels + y * screen0->pitch + x * bpp;
-
-        /* Ustawiamy wartość pixela, w zależności od formatu powierzchni*/
-        switch(bpp)
+    SDL_Color kolor, kolor2;
+    for(int x = 1; x < ImgWidth - 1; x++)
+        for(int y = 0; y < ImgHeight; y++)
         {
-            case 1: //8-bit
-                *p = pixel;
-                break;
+            kolor = pixels[x][y];
+            float oldR = kolor.r;
+            float oldG = kolor.g;
+            float oldB = kolor.b;
 
-            case 2: //16-bit
-                *(Uint16 *)p = pixel;
-                break;
+            int factor = 15; // uzywamy 2 wartosci
+            Uint8 newR = round(factor * oldR / 255) * (255 / factor);
+            Uint8 newG = round(factor * oldG / 255) * (255 / factor);
+            Uint8 newB = round(factor * oldB / 255) * (255 / factor);
+            pixels[x][y] = {newR, newG, newB};
 
-            case 3: //24-bit
-                if(SDL_BYTEORDER == SDL_BIG_ENDIAN) {
-                    p[0] = (pixel >> 16) & 0xff;
-                    p[1] = (pixel >> 8) & 0xff;
-                    p[2] = pixel & 0xff;
-                } else {
-                    p[0] = pixel & 0xff;
-                    p[1] = (pixel >> 8) & 0xff;
-                    p[2] = (pixel >> 16) & 0xff;
-                }
-                break;
+            float errR = oldR - newR;
+            float errG = oldG - newG;
+            float errB = oldB - newB;
 
-            case 4: //32-bit
-                *(Uint32 *)p = pixel;
-                break;
+            kolor2 = pixels[x+1][y];
+            float r = kolor2.r;
+            float g = kolor2.g;
+            float b = kolor2.b;
+            r = r + (errR * 7.0/16.0);
+            g = g + (errG * 7.0/16.0);
+            b = b + (errB * 7.0/16.0);
+            pixels[x+1][y] = {r, g, b};
 
+            kolor2 = pixels[x-1][y+1];
+            r = kolor2.r;
+            g = kolor2.g;
+            b = kolor2.b;
+            r = r + (errR * 3.0/16.0);
+            g = g + (errG * 3.0/16.0);
+            b = b + (errB * 3.0/16.0);
+            pixels[x-1][y+1] = {r, g, b};
+
+            kolor2 = pixels[x][y+1];
+            r = kolor2.r;
+            g = kolor2.g;
+            b = kolor2.b;
+            r = r + (errR * 5.0/16.0);
+            g = g + (errG * 5.0/16.0);
+            b = b + (errB * 5.0/16.0);
+            pixels[x][y+1] = {r, g, b};
+
+            kolor2 = pixels[x+1][y+1];;
+            r = kolor2.r;
+            g = kolor2.g;
+            b = kolor2.b;
+            r = r + errR * 1.0/16.0;
+            g = g + errG * 1.0/16.0;
+            b = b + errB * 1.0/16.0;
+            pixels[x+1][y+1] = {r, g, b};
         }
-        /* update the screen (aka double buffering) */
-    }
+
+        return pixels;
 }

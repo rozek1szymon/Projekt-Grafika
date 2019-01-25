@@ -93,10 +93,21 @@ void Funkcja1()
         }
     }
 
-    if (img_info->dithering) {
-        pixels = converter->Dithering(pixels);
+    if (img_info->dithering)
+    {
+        SDL_Color ** pixels2=new SDL_Color *[img_width];
+        for (int i = 0; i<img_width; i++)
+        pixels2[i] = new SDL_Color [img_height];
+        pixels2 = converter->Dithering(pixels);
         cout<<"Dithering wlaczony"<<endl;
-    } else {
+
+
+         for (int i = 0; i<img_width; i++)
+         delete [] pixels2[i];
+          delete [] pixels2;
+
+} else
+    {
         cout<<"Dithering wylaczony"<<endl;
     }
 
@@ -106,6 +117,7 @@ void Funkcja1()
             setPixel(xx, yy, pixels[xx][yy].r, pixels[xx][yy].g, pixels[xx][yy].b);
         }
     }
+
 
     lzw->encodeLZW(pixels, kolor, img_width, img_height);
 

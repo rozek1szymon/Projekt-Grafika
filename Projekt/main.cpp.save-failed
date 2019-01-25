@@ -93,12 +93,23 @@ void Funkcja1()
         }
     }
 
-    if (img_info->dithering) {
-        pixels = converter->Dithering(pixels);
+    //if (img_info->dithering)
+    //{
+         pixels2 = new SDL_Color * [img_width];
+    for (int i = 0; i < img_width; i++)
+        pixels2[i] = new SDL_Color[img_height];
+        pixels2 = converter->Dithering(pixels);
         cout<<"Dithering wlaczony"<<endl;
-    } else {
-        cout<<"Dithering wylaczony"<<endl;
-    }
+
+
+          for (int i = 0; i<img_width; i++)
+         delete [] pixels2[i];
+          delete [] pixels2;
+
+    //} else
+   // {
+     //   cout<<"Dithering wylaczony"<<endl;
+    //}
 
     for(int xx=0; xx<img_width; xx++) {
         for(int yy=0; yy<img_height; yy++)
@@ -106,6 +117,7 @@ void Funkcja1()
             setPixel(xx, yy, pixels[xx][yy].r, pixels[xx][yy].g, pixels[xx][yy].b);
         }
     }
+
 
     lzw->encodeLZW(pixels, kolor, img_width, img_height);
 
@@ -218,7 +230,7 @@ void czyscEkran(Uint8 R, Uint8 G, Uint8 B)
     SDL_Flip(screen);
 }
 
-SSDL_Color getPixel (int x, int y) {
+SDL_Color getPixel (int x, int y) {
     SDL_Color color ;
     Uint32 col = 0 ;
     if ((x>=0) && (x<width) && (y>=0) && (y<height)) {

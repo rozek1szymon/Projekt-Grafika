@@ -1141,10 +1141,10 @@
 	<SDL/SDL.h>
 	<SDL.h>
 
-1548411947 source:c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\converter.cpp
+1548434448 source:c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\converter.cpp
 	"Converter.h"
 
-1548411947 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\converter.h
+1548429071 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\converter.h
 	<SDL/SDL.h>
 	<SDL.h>
 	<stdio.h>
@@ -1525,7 +1525,7 @@
 	<ctime>
 	"Heap.h"
 
-1548413262 source:c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\main.cpp
+1548433995 source:c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL/SDL.h>

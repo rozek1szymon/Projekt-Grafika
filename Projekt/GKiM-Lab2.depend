@@ -1141,17 +1141,17 @@
 	<SDL/SDL.h>
 	<SDL.h>
 
-1548275476 source:c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\converter.cpp
+1548411947 source:c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\converter.cpp
 	"Converter.h"
 
-1548209152 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\converter.h
+1548411947 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\converter.h
 	<SDL/SDL.h>
 	<SDL.h>
 	<stdio.h>
 	<vector>
 	"Heap.h"
 
-1548209076 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl.h
 	"SDL_main.h"
 	"SDL_stdinc.h"
 	"SDL_audio.h"
@@ -1170,14 +1170,14 @@
 	"begin_code.h"
 	"close_code.h"
 
-1548209076 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_main.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_main.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_stdinc.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_stdinc.h
 	"SDL_config.h"
 	<sys/types.h>
 	<stdio.h>
@@ -1203,17 +1203,17 @@
 	<stdlib.h>
 	"close_code.h"
 
-1548209076 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_config.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_config.h
 	"SDL_platform.h"
 	<stdarg.h>
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_platform.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_platform.h
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\begin_code.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\begin_code.h
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\close_code.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\close_code.h
 
-1548209076 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_audio.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_audio.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_endian.h"
@@ -1223,23 +1223,23 @@
 	"begin_code.h"
 	"close_code.h"
 
-1548209076 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_error.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_error.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209076 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_endian.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_endian.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209076 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_mutex.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_mutex.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_thread.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_thread.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_mutex.h"
@@ -1247,24 +1247,24 @@
 	<process.h>
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_rwops.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_rwops.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209076 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_cdrom.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_cdrom.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209076 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_cpuinfo.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_cpuinfo.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209076 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_events.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_events.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_active.h"
@@ -1275,63 +1275,63 @@
 	"begin_code.h"
 	"close_code.h"
 
-1548209076 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_active.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_active.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209076 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_keyboard.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_keyboard.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_keysym.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209076 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_keysym.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_keysym.h
 
-1548209076 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_mouse.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_mouse.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_video.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_video.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_rwops.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209076 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_joystick.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_joystick.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_quit.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_quit.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 
-1548209076 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_loadso.h
-	"SDL_stdinc.h"
-	"SDL_error.h"
-	"begin_code.h"
-	"close_code.h"
-
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_timer.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_loadso.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_version.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl\sdl_version.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209076 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl.h
 	"SDL_main.h"
 	"SDL_stdinc.h"
 	"SDL_audio.h"
@@ -1350,14 +1350,14 @@
 	"begin_code.h"
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_main.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_main.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_stdinc.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_stdinc.h
 	"SDL_config.h"
 	<sys/types.h>
 	<stdio.h>
@@ -1383,17 +1383,17 @@
 	<stdlib.h>
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_config.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_config.h
 	"SDL_platform.h"
 	<stdarg.h>
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_platform.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_platform.h
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\begin_code.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\begin_code.h
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\close_code.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\close_code.h
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_audio.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_audio.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_endian.h"
@@ -1403,23 +1403,23 @@
 	"begin_code.h"
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_error.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_error.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_endian.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_endian.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_mutex.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_mutex.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_thread.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_thread.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_mutex.h"
@@ -1427,24 +1427,24 @@
 	<process.h>
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_rwops.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_rwops.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_cdrom.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_cdrom.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_cpuinfo.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_cpuinfo.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_events.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_events.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_active.h"
@@ -1455,63 +1455,63 @@
 	"begin_code.h"
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_active.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_active.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_keyboard.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_keyboard.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_keysym.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_keysym.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_keysym.h
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_mouse.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_mouse.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_video.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_video.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_rwops.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_joystick.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_joystick.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_quit.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_quit.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_loadso.h
-	"SDL_stdinc.h"
-	"SDL_error.h"
-	"begin_code.h"
-	"close_code.h"
-
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_timer.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_loadso.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209077 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_version.h
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1548411778 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\sdl-1.2.14\include\sdl_version.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1548209152 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\heap.h
+1548411947 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\heap.h
 	<iostream>
 	<algorithm>
 	<cstdlib>
@@ -1520,12 +1520,12 @@
 	<SDL/SDL.h>
 	<SDL.h>
 
-1548209152 source:c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\heap.cpp
+1548411947 source:c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\heap.cpp
 	<iostream>
 	<ctime>
 	"Heap.h"
 
-1548324184 source:c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\main.cpp
+1548413262 source:c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL/SDL.h>
@@ -1536,7 +1536,10 @@
 	<map>
 	<vector>
 	<math.h>
+	"ImgInfo.h"
+	"UserInterface.h"
 	"Converter.h"
+	"LZW.h"
 
 1548378505 source:\\mac\home\desktop\projekt-grafika\projekt\converter.cpp
 	"Converter.h"
@@ -1963,4 +1966,30 @@
 	<vector>
 	<map>
 	<string>
+
+1548411947 source:c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\imginfo.cpp
+	"ImgInfo.h"
+
+1548411947 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\imginfo.h
+	<string>
+
+1548411947 source:c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\lzw.cpp
+	"LZW.h"
+
+1548411947 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\lzw.h
+	<SDL/SDL.h>
+	<SDL.h>
+	"iostream"
+	"fstream"
+	<algorithm>
+	<vector>
+	<map>
+	<string>
+
+1548411947 c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\userinterface.h
+	"ImgInfo.h"
+
+1548411947 source:c:\users\hp\desktop\projekt grafika\projekt-grafika\projekt\userinterface.cpp
+	"UserInterface.h"
+	<iostream>
 

@@ -248,6 +248,7 @@ int main ( int argc, char** argv )
         printf( "Unable to init SDL: %s\n", SDL_GetError() );
         return 1;
     }
+
     // make sure SDL cleans up before exit
     atexit(SDL_Quit);
     // create a new window

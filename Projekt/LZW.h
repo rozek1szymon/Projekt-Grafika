@@ -53,16 +53,15 @@ public:
     void BitGeneration ();
     string takeOneColor (string colorCode, int index);
     void encodeLZW (SDL_Color** image, SDL_Color* colors, int width, int height);
-    //void decodeLZW ()
+    SDL_Color** decodeLZW (SDL_Color* colors, int width, int height);
 
 private:
     vector<string> dictionary;
     vector<string>::iterator it;
-
     vector<string> encodingDictionary;
 
     map<rgb, string, compEncode> encodeMap;
-    //map<string, rgb, compDecode> decodeMap;
+    map<string, rgb, compDecode> decodeMap;
 
     string* bitArray;
     SDL_Color* colors;

@@ -1538,10 +1538,10 @@
 	<math.h>
 	"Converter.h"
 
-1548368183 source:\\mac\home\desktop\projekt-grafika\projekt\converter.cpp
+1548378505 source:\\mac\home\desktop\projekt-grafika\projekt\converter.cpp
 	"Converter.h"
 
-1548368057 \\mac\home\desktop\projekt-grafika\projekt\converter.h
+1548377824 \\mac\home\desktop\projekt-grafika\projekt\converter.h
 	<SDL/SDL.h>
 	<SDL.h>
 	<stdio.h>
@@ -1922,7 +1922,7 @@
 	<ctime>
 	"Heap.h"
 
-1548375876 source:\\mac\home\desktop\projekt-grafika\projekt\main.cpp
+1548381254 source:\\mac\home\desktop\projekt-grafika\projekt\main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL/SDL.h>
@@ -1944,17 +1944,17 @@
 1548369893 \\mac\home\desktop\projekt-grafika\projekt\imginfo.h
 	<string>
 
-1548370110 source:\\mac\home\desktop\projekt-grafika\projekt\userinterface.cpp
+1548379157 source:\\mac\home\desktop\projekt-grafika\projekt\userinterface.cpp
 	"UserInterface.h"
 	<iostream>
 
-1548369655 \\mac\home\desktop\projekt-grafika\projekt\userinterface.h
+1548379106 \\mac\home\desktop\projekt-grafika\projekt\userinterface.h
 	"ImgInfo.h"
 
-1548376375 source:\\mac\home\desktop\projekt-grafika\projekt\lzw.cpp
+1548381153 source:\\mac\home\desktop\projekt-grafika\projekt\lzw.cpp
 	"LZW.h"
 
-1548375823 \\mac\home\desktop\projekt-grafika\projekt\lzw.h
+1548381149 \\mac\home\desktop\projekt-grafika\projekt\lzw.h
 	<SDL/SDL.h>
 	<SDL.h>
 	"iostream"

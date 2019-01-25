@@ -117,11 +117,20 @@ void LZW::encodeLZW (SDL_Color** image, SDL_Color* colors, int width, int height
     }
 }
 
-/*SDL_Colors** LZW::decodeLZW () {
+SDL_Color** LZW::decodeLZW(SDL_Color* colors, int width, int height) {
     cout<<"Decoding..."<<endl;
     fstream file;
 
-    SDL_Colors** decodedImage = new SDL_Color*[width];
+    SDL_Color** decodedImage = new SDL_Color*[width];
+    for (int i = 0; i < width; i++) {
+        decodedImage[i] = new SDL_Color[height];
+    }
+
+    rgb RGB;
+    for (int i = 0; i < 16; i++) {
+        RGB = {colors[i].r, colors[i].g, colors[i].b};
+        decodeMap[bitArray[i]] = RGB;
+    }
 
     string word = "";
     string lastWord = "";
@@ -134,6 +143,7 @@ void LZW::encodeLZW (SDL_Color** image, SDL_Color* colors, int width, int height
         word = encodingDictionary[indexDict];
 
         while (!file.eof()) {
+            cout<<"loading..."<<endl;
             lastWord = encodingDictionary[indexDict];
             file >> indexDict;
             string tempWord;
@@ -147,20 +157,25 @@ void LZW::encodeLZW (SDL_Color** image, SDL_Color* colors, int width, int height
                 word += (tempWord);
             }
         }
-        cout<<endl;
 
         file.close();
 
+        cout<<"loaded"<<endl;
+
+        rgb kolor;
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                decodedImage[i][j] = decodeMap[takeOneColor(word, (i*height+j))];
+                cout<<"copying..."<<endl;
+                kolor = decodeMap[takeOneColor(word, (i*height+j))];
+                //cout<<kolor.r<<" "<<kolor.g<<" "<<kolor.b<<endl;
+                decodedImage[i][j] = {kolor.r, kolor.g, kolor.b};
             }
         }
-
+        cout<<"done!"<<endl;
+        return decodedImage;
     }
     else
     {
         exit(0);
     }
 }
-*/

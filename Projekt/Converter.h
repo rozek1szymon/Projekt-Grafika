@@ -38,6 +38,7 @@ private:
 
 public:
     Converter(SDL_Color** _pixels, int width, int height, SDL_Surface *screen);
+    ~Converter();
 
     SDL_Color* fillColorPalette();
     SDL_Color* fillBWPalette();

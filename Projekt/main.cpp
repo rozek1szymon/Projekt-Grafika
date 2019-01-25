@@ -107,7 +107,7 @@ void Funkcja1()
         }
     }
 
-    //lzw->encodeLZW(pixels, kolor, img_width, img_height);
+    lzw->encodeLZW(pixels, kolor, img_width, img_height);
 
     SDL_Flip(screen);
 }
@@ -261,11 +261,34 @@ int main ( int argc, char** argv )
     // program main loop
     bool done = false;
 
-    UI = new UserInterface();
-    img_info = UI->Run();
-    ladujBMP((img_info->filename).c_str(), 0, 0);
-    cout<<"Nacisnij '1' na ekranie ze zdjeciem aby wykonac kompresje."<<endl;
-    cout<<"Nacisnij 'ESC' na ekranie ze zdjeciem aby zakonczyc program."<<endl;
+    int x;
+    cout<<"[1] Konwertuj z .bmp do .pgkim"<<endl;
+    cout<<"[2] Konwertuj z .pgkim do .bmp"<<endl;
+    cin>>x;
+    switch( x )
+    {
+    case 1:
+        UI = new UserInterface();
+        img_info = UI->Run();
+        ladujBMP((img_info->filename).c_str(), 0, 0);
+        cout<<"Nacisnij '1' na ekranie ze zdjeciem aby wykonac kompresje."<<endl;
+        cout<<"Nacisnij 'ESC' na ekranie ze zdjeciem aby zakonczyc program."<<endl;
+        delete(UI);
+        delete(converter);
+        break;
+    case 2:
+        SDL_Color* kolor = converter->fillColorPalette();
+        pixels = lzw->decodeLZW(kolor, width/2, height/2);
+        for (int i = 0; i < width/2; i++)
+        {
+            for (int j = 0; j < height/2; j++)
+            {
+                setPixel(i, j, pixels[i][j].r, pixels[i][j].g, pixels[i][j].b);
+            }
+        }
+        SDL_Flip(screen);
+        break;
+    }
 
      while (!done)
     {

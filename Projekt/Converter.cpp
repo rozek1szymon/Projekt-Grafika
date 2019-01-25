@@ -9,6 +9,10 @@ Converter::Converter(SDL_Color** _pixels, int width, int height, SDL_Surface *sc
     pixelsTo1D();
 }
 
+Converter::~Converter(){
+
+}
+
 SDL_Color* Converter::fillColorPalette() {
 
     SDL_Color* ColorPalette = new SDL_Color[16];
@@ -122,17 +126,19 @@ void Converter::MedianCut(RLE* undertable, int left, int right, int size)
 
     maxrangemem[left][right] = maxRange = Maxrange(rRange, gRange, bRange);
 
-    Heap kopiec(pixels1D, size);
+    Heap* kopiec = new Heap(pixels1D, size);
 
     if (maxRange == 0)
-        kopiec.Sortby(sortr);
+        kopiec->Sortby(sortr);
     else if (maxRange == 1)
-        kopiec.Sortby(sortg);
+        kopiec->Sortby(sortg);
     else
-        kopiec.Sortby(sortb);
+        kopiec->Sortby(sortb);
 
-    kopiec.RestoreAtt();
-    kopiec.HeapSort();
+    kopiec->RestoreAtt();
+    kopiec->HeapSort();
+
+    delete(kopiec);
 
     if (size % 2 == 0)
     {

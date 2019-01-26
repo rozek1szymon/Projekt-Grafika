@@ -206,12 +206,12 @@ void Converter::pixelsTo1D()
 SDL_Color** Converter::Dithering(SDL_Color** pixels) {
 
     SDL_Color kolor, kolor2;
-    SDL_Color ** pixels2=new SDL_Color *[ImgWidth];
+    SDL_Color ** pixels2= new SDL_Color *[ImgWidth];
     for (int i = 0; i<ImgWidth; i++)
-   pixels2[i] = new SDL_Color [ImgHeight];
+    pixels2[i] =  new SDL_Color [ImgHeight];
 
-     for(int x = 1; x < ImgWidth ; x++)
-        for(int y = 0; y < ImgHeight-1; y++)
+     for(int x = 1; x < ImgWidth-1 ; x++)
+        for(int y = 0; y < ImgHeight; y++)
         {
             kolor = pixels[x][y];
             Uint8 oldR = kolor.r;
@@ -265,11 +265,8 @@ SDL_Color** Converter::Dithering(SDL_Color** pixels) {
             pixels2[x+1][y+1] = {r, g, b};
         }
 
-  pixels=pixels2;
-for (int i = 0; i<ImgWidth; i++)
-         delete [] pixels2[i];
-          delete [] pixels2;
-        return pixels;
+
+        return pixels2;
 
 
 }
